@@ -57,11 +57,27 @@ for (const boton of botonesCompra) {
     })
 }
 function agregarACarrito(peli) {
+<<<<<<< HEAD
     carrito.push(peli);
     console.table(carrito);
     let total = 0;
     for (let i = 0; i < carrito.length; i++) {
         total += carrito[i].price;
+=======
+    let carritoEnStorage = JSON.parse(localStorage.getItem('carrito')) || [];
+    let indiceExistente = carritoEnStorage.findIndex(item => item.id === peli.id);
+    if (indiceExistente !== -1) {
+        carritoEnStorage[indiceExistente].cantidad += 1;
+    } else {
+        peli.cantidad = 1;
+        carritoEnStorage.push(peli);
+    }
+    localStorage.setItem('carrito', JSON.stringify(carritoEnStorage));
+    console.table(carritoEnStorage);
+    let total = 0;
+    for (let i = 0; i < carritoEnStorage.length; i++) {
+        total += carritoEnStorage[i].price * carritoEnStorage[i].cantidad;
+>>>>>>> Updates
     }
     document.getElementById('total').textContent = `Total a pagar $: ${total}`;
     tablaBody.innerHTML += `
@@ -72,6 +88,35 @@ function agregarACarrito(peli) {
         </tr>
     `;
 }
+const pagarTotalBtn = document.getElementById('pagar-total');
+pagarTotalBtn.addEventListener('click', function() {
+    let carritoEnStorage = JSON.parse(localStorage.getItem('carrito')) || [];
+    if (carritoEnStorage.length === 0) {
+        Swal.fire({
+            icon: "error",
+            title: "No hay artículos en el carrito",
+            text: "Por favor, agrega al menos un artículo antes de proceder con el pago",
+        });
+        return;
+    }
+    let total = 0;
+    for (let i = 0; i < carritoEnStorage.length; i++) {
+        total += carritoEnStorage[i].price * carritoEnStorage[i].cantidad;
+    }
+    let mensaje = `Total a pagar: $${total}\n\nArtículos:\n`;
+    for (let i = 0; i < carritoEnStorage.length; i++) {
+        mensaje += `${carritoEnStorage[i].title} - $${carritoEnStorage[i].price}\n`;
+    }
+    Swal.fire({
+        title: "Gracias por tu compra",
+        text: mensaje,
+        icon: "success"
+    });
+    localStorage.removeItem('carrito');
+    tablaBody.innerHTML = '';
+    document.getElementById('total').textContent = 'Total a pagar $: 0';
+});
+>>>>>>> Updates
 document.getElementById("boton").addEventListener("click", function () {
     buscarPelicula(peliculas);
 });
