@@ -57,13 +57,6 @@ for (const boton of botonesCompra) {
     })
 }
 function agregarACarrito(peli) {
-<<<<<<< HEAD
-    carrito.push(peli);
-    console.table(carrito);
-    let total = 0;
-    for (let i = 0; i < carrito.length; i++) {
-        total += carrito[i].price;
-=======
     let carritoEnStorage = JSON.parse(localStorage.getItem('carrito')) || [];
     let indiceExistente = carritoEnStorage.findIndex(item => item.id === peli.id);
     if (indiceExistente !== -1) {
@@ -77,7 +70,6 @@ function agregarACarrito(peli) {
     let total = 0;
     for (let i = 0; i < carritoEnStorage.length; i++) {
         total += carritoEnStorage[i].price * carritoEnStorage[i].cantidad;
->>>>>>> Updates
     }
     document.getElementById('total').textContent = `Total a pagar $: ${total}`;
     tablaBody.innerHTML += `
@@ -116,7 +108,6 @@ pagarTotalBtn.addEventListener('click', function() {
     tablaBody.innerHTML = '';
     document.getElementById('total').textContent = 'Total a pagar $: 0';
 });
->>>>>>> Updates
 document.getElementById("boton").addEventListener("click", function () {
     buscarPelicula(peliculas);
 });
