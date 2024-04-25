@@ -8,7 +8,7 @@ function renderizarPeliculas(listPeliculas) {
         <img class="card-img-top" src=${peli.poster} alt=${peli.title}>
         <div class="card-body margin:10px">
         <h4 class="card-title">${peli.title}</h4>
-          <h5 class="card-text">Rating ${peli.rating}</h5>
+        <h5 class="card-text">$ ${peli.price}</h5>
           <button class="btn btn-primary compra" id=${peli.id}>Alquilar</button>
         </div>
       </div>
@@ -25,6 +25,11 @@ function buscarPelicula(peliculas) {
         const peliculasEncontradas = peliculas.filter(pelicula => pelicula.title.toLowerCase().includes(peliculaBuscada));
 
         if (peliculasEncontradas.length === 0) {
+            Swal.fire({
+                icon: "question",
+                title: "No pudimos encontrar tu película",
+                text: "No se encontró ninguna película con ese título.",
+            });
             console.log("No se encontró ninguna película con ese título.");
             contenedorBusqueda.classList.add('d-none');
         } else {
@@ -33,7 +38,7 @@ function buscarPelicula(peliculas) {
                     <img class="card-img-top" src=${peli.poster} alt=${peli.title}>
                     <div class="card-body margin:10px">
                         <h4 class="card-title">${peli.title}</h4>
-                        <h5 class="card-text">Rating ${peli.rating}</h5>
+                        <h5 class="card-text">$ ${peli.price}</h5>
                         <button class="btn btn-primary compra" id=${peli.id}>Alquilar</button>
                     </div>
                 </div>
@@ -42,7 +47,11 @@ function buscarPelicula(peliculas) {
             contenedorBusqueda.classList.remove('d-none');
         }
     } else {
-        alert('Debes ingresar una película')
+        Swal.fire({
+            icon: "error",
+            title: "Debes ingresar una película",
+            text: "Por favor, asegurate de seleccionar una película antes de buscar.",
+        });
         contenedorBusqueda.classList.add('d-none');
     }
 }
