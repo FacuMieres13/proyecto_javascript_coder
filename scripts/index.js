@@ -63,7 +63,15 @@ for (const boton of botonesCompra) {
         const peliACarrito = peliculas.find(pelicula => pelicula.id == boton.id);
         console.log(peliACarrito);
         agregarACarrito(peliACarrito);
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `Añadiste ${peliACarrito.title} al carrito`,
+            showConfirmButton: false,
+            timer: 1500
+          });
     })
+
 }
 function agregarACarrito(peli) {
     let carritoEnStorage = JSON.parse(localStorage.getItem('carrito')) || [];
