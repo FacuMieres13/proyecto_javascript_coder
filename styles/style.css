@@ -3,6 +3,6 @@
     padding:0;
 }
 
-#titulo-principal {
+#titulo-principal, #tabla-carrito,#carrito,#tablabody {
     color: #FF006C;
 }
