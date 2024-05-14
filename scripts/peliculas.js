@@ -8,8 +8,6 @@ async function fetchData() {
         
         window.peliculas = data.movies;
         console.log(window.peliculas);
-        
-        // renderizarPeliculas(data.movies);
         showPageContent();
     } catch (error) {
         console.error('Error al obtener los datos:', error);
