@@ -3,6 +3,39 @@
     padding:0;
 }
 
-#titulo-principal {
+#titulo-principal, #total, #title-carrito, #headers {
     color: #FF006C;
 }
+
+#circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+	width: 150px;
+    height: 150px;	
+}
+
+.loader {
+    width: calc(100% - 0px);
+	height: calc(100% - 0px);
+	border: 8px solid #162534;
+	border-top: 8px solid #FF006C;
+	border-radius: 50%;
+	animation: rotate 5s linear infinite;
+}
+.carga {
+    color:#FF006C;
+    margin: 0 auto;
+    text-align: center;
+    vertical-align: bottom;
+}
+
+.text-row {
+    color: white;
+}
+
+
+@keyframes rotate {
+100% {transform: rotate(360deg);}
+} 
