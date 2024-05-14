@@ -37,16 +37,6 @@ function buscarPelicula(peliculas) {
             });
             console.log("No se encontró ninguna película con ese título.");
         } else {
-            // contenedorBusqueda.innerHTML = peliculasEncontradas.map(peli => `
-            //     <div class="card" style="width: 18rem; text-align:center; margin:0 auto;">
-            //         <img class="card-img-top" src=${peli.poster} alt=${peli.title}>
-            //         <div class="card-body margin:10px">
-            //             <h4 class="card-title">${peli.title}</h4>
-            //             <h5 class="card-text">$ ${peli.price}</h5>
-            //             <button class="btn btn-primary compra" id=${peli.id}>Alquilar</button>
-            //         </div>
-            //     </div>
-            // `).join('');
             renderizarPeliculas(peliculasEncontradas);
         }
     } else {
@@ -183,5 +173,3 @@ function main() {
 }
 
 showLoader();
-
-// setTimeout(showPageContent, 5000); // 30 segundos = 30000 milisegundos
