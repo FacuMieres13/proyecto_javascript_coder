@@ -24,6 +24,9 @@
 	border-radius: 50%;
 	animation: rotate 5s linear infinite;
 }
+.row {
+    gap:15px
+}
 .carga {
     color:#FF006C;
     margin: 0 auto;
